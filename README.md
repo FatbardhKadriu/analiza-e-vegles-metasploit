@@ -109,6 +109,9 @@ $ service apache2 status
 
 ![Kalimi i aplikacionit](READMEresources/kalimi_i_aplikacionit.gif)
 
+| ![Kalimi i aplikacionit1](READMEresources/kalimi_i_aplikacionit1.gif) | ![Kalimi i aplikacionit1](READMEresources/kalimi_i_aplikacionit2.gif) |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+
 ### Shfrytëzimi i pajisjes së targetuar
 
 Shembulli jonë e përdorë modulin exploit/multi/handler duke specifikuar payload, hostin i cili pret kthimin e lidhjes prapa dhe portin në të cilin dëgjohet lidhja. Komanda exploit fillon kërkimin e dobësive dhe në momentin që vendoset lidhja me aplikacionin e infektuar hapet meterpreter dhe nga aty e tutje mund të manipulohet pajisja e viktimës.
@@ -124,6 +127,8 @@ msf6 > set LPORT 4444
 
 msf6 > exploit
 ```
+
+![Komandat e exploit](READMEresources/exploit.gif)
 
 Sapo viktima ta ketë instaluar aplikacionin e infektuar dhe të tentojë ta hapë, krijohet një session në meterpreter.
 
@@ -212,13 +217,9 @@ Stdapi: Networking Commands
     ipconfig      Display interfaces
 ```
 
-#### ifconfig
+#### ifconfig dhe ipconfig
 
-`ifconfig` shfaq ndërfaqen e rrjetit në të cilin është e kyçur pajisja e komprementuar.
-
-#### ipconfig
-
-`ipconfig`
+`ifconfig` dhe `ipconfig` shfaqin ndërfaqen e rrjetit në të cilin është e kyçur pajisja sulmuese dhe pajisja e komprementuar.
 
 ![Komandat e rrjetit](READMEresources/komandat_e_rrjetit.gif)
 
@@ -238,19 +239,19 @@ Stdapi: System Commands
 
 #### getuid
 
-`getuid`
+`getuid` tregon id e përdoruesit i cili është duke u përdorur në pajisjen sulmuese.
 
 #### localtime
 
-`localtime`
+`localtime` tregon kohën lokale të pajisjes.
 
 #### shell
 
-`shell`
+`shell` hap një shell standard për sistemin e pajisjes së targetuar.
 
 #### sysinfo
 
-`sysinfo`
+`sysinfo` shfaq të dhënat e sistemit duke përfshirë pikën e dëgjimit tek sulmuesi, sistemin operativ të pajisjes së komprementuar dhe llojin e meterpreter.
 
 ![Komandat e sistemit](READMEresources/komandat_e_sistemit.gif)
 
@@ -343,14 +344,21 @@ Android Commands
 - `-d` specifikon numrin telefonik tek i cili do të dërgohet mesazhi
 - `-t` specifikon përmbajtjen tekstuale të mesazhit që do të dërgohet
 
+| ![Komandat e mesazhit](READMEresources/mesazhi.gif) | ![Komandat e mesazhit](READMEresources/mesazhi2.gif) |
+| --------------------------------------------------- | ---------------------------------------------------- |
+
 #### set_audio_mode
 
 `set_audio_mode` ndërron gjendjen e audios së pajisjes.
 
 - `-m` specifikon modin në të cilin vendoset pajisja
+
   - 0 - silent
   - 1 - normal
   - 2 - hight
+
+| ![Komandat e audio](READMEresources/audio.gif) | ![Komandat e audio2](READMEresources/audio2.gif) |
+| ---------------------------------------------- | ------------------------------------------------ |
 
 ### Komandat për kontrollimin e aplikacioneve
 
@@ -373,10 +381,12 @@ Application Controller Commands
 
 `app_run` hap një aplikacion të caktuar që është i instaluar tek pajisja e komprementuar varësisht se cilin e zgjedhim.
 
-![Komandat e aplikacioneve](READMEresources/komandat_e_aplikacioneve.gif)
+| ![Komandat e aplikacioneve](READMEresources/komandat_e_aplikacioneve.gif) | ![Komandat e aplikacioneve1](READMEresources/komandat_e_aplikacioneve1.gif) |
+| ------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 
 #### app_unisntall
 
 `app_uninstall` shfaq dialogun për të fshirë një aplikacion të pajisjes.
 
-![Komandat e aplikacioneve2](READMEresources/komandat_e_aplikacioneve2.gif)
+| ![Komandat e aplikacioneve2](READMEresources/komandat_e_aplikacioneve2.gif) | ![Komandat e aplikacioneve3](READMEresources/komandat_e_aplikacioneve3.gif) |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |

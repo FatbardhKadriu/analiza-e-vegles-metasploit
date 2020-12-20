@@ -8,7 +8,49 @@ title: Analiza e veglës Metasploit
 | ---------------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 |                                                      |                                              |                                              |
 
+  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ky punim është kryer në kuadër të detyrës së dytë në lëndën "Siguria e Informacionit" dhe shembujt e testuar janë përdorur vetëm për qëllime edukative. Zhvillimi i shembujve të tillë pa dijeninë dhe miratimin e personave të përfshirë si target konsiderohet jolegale.
+
+#### Përmbajtja
+* [Teknologjitë dhe pajisjet e përdorura](#teknologjitë-dhe-pajisjet-e-përdorura)
+* [Çfarë është Metasploit](#çfarë-është-metasploit)
+* [Shembujt e testuar](#shembujt-e-testuar)
+    + [Exploit](#exploit)
+    + [Payload](#payload)
+    + [Krijimi i android aplikacionit të infektuar](#krijimi-i-android-aplikacionit-të-infektuar)
+    + [Kalimi i aplikacionit të infektuar tek sistemi i targetuar](#kalimi-i-aplikacionit-të-infektuar-tek-sistemi-i-targetuar)
+    + [Shfrytëzimi i sistemit të targetuar](#shfrytëzimi-i-sistemit-të-targetuar)
+* [Komandat e Meterpreter](#komandat-e-meterpreter)
+    + [Komandat kryesore](#komandat-kryesore)
+      - [background dhe bg](#background-dhe-bg)
+    + [Komandat e sistemit të fajllave](#komandat-e-sistemit-të-fajllave)
+      - [cd dhe lcd](#cd-dhe-lcd)
+      - [ls dhe lls](#ls-dhe-lls)
+      - [pwd dhe lpwd](#pwd-dhe-lpwd)
+      - [search](#search)
+    + [Komandat e rrjetit](#komandat-e-rrjetit)
+      - [ifconfig dhe ipconfig](#ifconfig-dhe-ipconfig)
+    + [Komandat e sistemit](#komandat-e-sistemit)
+      - [getuid](#getuid)
+      - [localtime](#localtime)
+      - [shell](#shell)
+      - [sysinfo](#sysinfo)
+    + [Komandat e kamerës](#komandat-e-kamerës)
+      - [record_mic](#record-mic)
+      - [webcam_list](#webcam-list)
+      - [webcam_snap](#webcam-snap)
+      - [webcam_stream](#webcam-stream)
+    + [Komandat e androidit](#komandat-e-androidit)
+      - [check_root](#check-root)
+      - [dump_calllog](#dump-calllog)
+      - [dump_contacts](#dump-contacts)
+      - [dump_sms](#dump-sms)
+      - [send_sms](#send-sms)
+      - [set_audio_mode](#set-audio-mode)
+    + [Komandat për kontrollimin e aplikacioneve](#komandat-për-kontrollimin-e-aplikacioneve)
+      - [app_list](#app-list)
+      - [app_run](#app-run)
+      - [app_unisntall](#app-unisntall)
 
 ## Teknologjitë dhe pajisjet e përdorura
 
@@ -108,7 +150,7 @@ _Gif. 1: Krijimi i apk fajllit_ -->
 <figcaption><small><i>Video 1: Krijimi i apk fajllit</i></small></figcaption>
 </center>
 
-### Kalimi i aplikacionit të infektuar tek sistemi targetuar
+### Kalimi i aplikacionit të infektuar tek sistemi i targetuar
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Për shkak që shumica e platformave online e detektojnë një fajll i cili ka përmajtje kërcënuese për sigurinë, kalimin e fajllit të infektuar nga sulmuesi tek sistemi e targetuar e bëjmë përmes web serverit të apache në linux. Sulmuesi e vendos fajllin e infetuar në lokacionin `/var/www/html/` dhe sistemi i targetuar duke u çasur në browser në IP adresën e sulmuesit mund të gjej aplikacionin dhe ta instaloj. Komanda për ta startuar apache serverin është:
 
